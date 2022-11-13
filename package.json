@@ -4,8 +4,10 @@
   "description": "",
   "author": "",
   "private": true,
-  "license": "UNLICENSED",
+  "license": "MIT",
   "scripts": {
+    "db:start": "scripts/db.sh",
+    "db:stop": "scripts/db.sh -s",
     "prebuild": "rimraf dist",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
@@ -22,7 +24,7 @@
   },
   "dependencies": {
     "@nestjs/common": "9.2.0",
-    "@nestjs/config": "^2.2.0",
+    "@nestjs/config": "2.2.0",
     "@nestjs/core": "9.2.0",
     "@nestjs/mapped-types": "^1.2.0",
     "@nestjs/platform-express": "9.2.0",
