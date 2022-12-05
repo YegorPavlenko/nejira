@@ -29,6 +29,6 @@ export class ProjectsService {
   }
 
   remove(id: number) {
-    return `This action removes a #${id} project`;
+    return this.projectsRepository.softRemove({ id: id });
   }
 }
