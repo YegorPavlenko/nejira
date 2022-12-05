@@ -17,11 +17,11 @@ export class ProjectsService {
   }
 
   findAll() {
-    return `This action returns all projects`;
+    return this.projectsRepository.find();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} project`;
+    return this.projectsRepository.findOneBy({ id: id });
   }
 
   update(id: number, updateProjectDto: UpdateProjectDto) {
