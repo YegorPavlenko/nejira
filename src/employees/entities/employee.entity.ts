@@ -8,7 +8,7 @@ import {
   VersionColumn,
 } from 'typeorm';
 
-@Entity()
+@Entity('employees')
 export class Employee {
   @PrimaryGeneratedColumn()
   id: number;

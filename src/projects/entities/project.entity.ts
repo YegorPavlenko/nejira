@@ -13,7 +13,7 @@ import {
 import { Employee } from '../../employees/entities/employee.entity';
 import { Milestone } from '../../milestones/entities/milestone.entity';
 
-@Entity()
+@Entity('projects')
 export class Project {
   @PrimaryGeneratedColumn()
   id: number;

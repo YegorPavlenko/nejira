@@ -8,7 +8,7 @@ import {
   VersionColumn,
 } from 'typeorm';
 
-@Entity()
+@Entity('attachments')
 export class Attachment {
   @PrimaryGeneratedColumn()
   id: number;

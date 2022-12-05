@@ -16,7 +16,7 @@ import { Attachment } from '../../attachments/entities/attachment.entity';
 import { Project } from '../../projects/entities/project.entity';
 import { Feature } from '../../features/entities/feature.entity';
 
-@Entity()
+@Entity('milestones')
 export class Milestone {
   @PrimaryGeneratedColumn()
   id: number;

@@ -18,7 +18,7 @@ import { History } from '../../history/entities/history.entity';
 import { Feature } from '../../features/entities/feature.entity';
 import { Milestone } from '../../milestones/entities/milestone.entity';
 
-@Entity()
+@Entity('tasks')
 export class Task {
   @PrimaryGeneratedColumn()
   id: number;
