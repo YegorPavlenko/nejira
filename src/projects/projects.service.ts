@@ -21,7 +21,7 @@ export class ProjectsService {
   }
 
   findOne(id: number) {
-    return this.projectsRepository.findOneBy({ id: id });
+    return this.projectsRepository.findOne({ where: { id: id } });
   }
 
   update(id: number, updateProjectDto: UpdateProjectDto) {
