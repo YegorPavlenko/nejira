@@ -1,19 +1,27 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { CreateEmployeeDto } from './dto/create-employee.dto';
 import { UpdateEmployeeDto } from './dto/update-employee.dto';
+import { Employee } from './entities/employee.entity';
 
 @Injectable()
 export class EmployeesService {
+  constructor(
+    @InjectRepository(Employee)
+    private employeesRepository: Repository<Employee>,
+  ) {}
+
   create(createEmployeeDto: CreateEmployeeDto) {
-    return 'This action adds a new employee';
+    return this.employeesRepository.save(createEmployeeDto);
   }
 
   findAll() {
-    return `This action returns all employees`;
+    return this.employeesRepository.find();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} employee`;
+    return this.employeesRepository.findOne({ where: { id: id } });
   }
 
   update(id: number, updateEmployeeDto: UpdateEmployeeDto) {
@@ -21,6 +29,6 @@ export class EmployeesService {
   }
 
   remove(id: number) {
-    return `This action removes a #${id} employee`;
+    return this.employeesRepository.softRemove({ id: id });
   }
 }
