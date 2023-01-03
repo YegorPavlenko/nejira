@@ -26,6 +26,9 @@ export class Task {
   @Column()
   name: string;
 
+  @Column()
+  title: string;
+
   @Column({ default: '' })
   description: string;
 
