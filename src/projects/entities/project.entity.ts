@@ -21,6 +21,9 @@ export class Project {
   @Column()
   name: string;
 
+  @Column()
+  tag: string; // short project name to use in tasks as a part of task name, recommended 3-5 symbols
+
   @Column({ default: '' })
   description: string;
 
