@@ -9,7 +9,7 @@ async function bootstrap() {
     .setTitle('Nejira demo')
     .setDescription('Nejira demo API description')
     .setVersion('0.0.1')
-    .addTag('nejira')
+    // .addTag('nejira')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('swagger', app, document);

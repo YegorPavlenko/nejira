@@ -10,7 +10,9 @@ import {
 import { MilestonesService } from './milestones.service';
 import { CreateMilestoneDto } from './dto/create-milestone.dto';
 import { UpdateMilestoneDto } from './dto/update-milestone.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('milestones')
 @Controller('milestones')
 export class MilestonesController {
   constructor(private readonly milestonesService: MilestonesService) {}
