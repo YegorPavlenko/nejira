@@ -5,25 +5,25 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { ConfigModule } from '@nestjs/config';
 
-import { ProjectsModule } from './projects/projects.module';
-import { AttachmentsModule } from './attachments/attachments.module';
-import { CommentsModule } from './comments/comments.module';
-import { FeaturesModule } from './features/features.module';
-import { MilestonesModule } from './milestones/milestones.module';
-import { TasksModule } from './tasks/tasks.module';
-import { EmployeesModule } from './employees/employees.module';
-import { HistoryModule } from './history/history.module';
-import { FilesModule } from './files/files.module';
+import { ProjectsModule } from './components/projects/projects.module';
+import { AttachmentsModule } from './components/attachments/attachments.module';
+import { CommentsModule } from './components/comments/comments.module';
+import { FeaturesModule } from './components/features/features.module';
+import { MilestonesModule } from './components/milestones/milestones.module';
+import { TasksModule } from './components/tasks/tasks.module';
+import { EmployeesModule } from './components/employees/employees.module';
+import { HistoryModule } from './components/history/history.module';
+import { FilesModule } from './components/files/files.module';
 
-import { Attachment } from './attachments/entities/attachment.entity';
-import { Comment } from './comments/entities/comment.entity';
-import { Employee } from './employees/entities/employee.entity';
-import { Feature } from './features/entities/feature.entity';
-import { File } from './files/entities/file.entity';
-import { History } from './history/entities/history.entity';
-import { Milestone } from './milestones/entities/milestone.entity';
-import { Project } from './projects/entities/project.entity';
-import { Task } from './tasks/entities/task.entity';
+import { Attachment } from './components/attachments/entities/attachment.entity';
+import { Comment } from './components/comments/entities/comment.entity';
+import { Employee } from './components/employees/entities/employee.entity';
+import { Feature } from './components/features/entities/feature.entity';
+import { File } from './components/files/entities/file.entity';
+import { History } from './components/history/entities/history.entity';
+import { Milestone } from './components/milestones/entities/milestone.entity';
+import { Project } from './components/projects/entities/project.entity';
+import { Task } from './components/tasks/entities/task.entity';
 
 @Module({
   imports: [
