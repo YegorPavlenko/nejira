@@ -16,15 +16,18 @@ import { Comment } from '../../comments/entities/comment.entity';
 import { Employee } from '../../employees/entities/employee.entity';
 import { History } from '../../history/entities/history.entity';
 import { Feature } from '../../features/entities/feature.entity';
-import { Milestone } from '../../milestones/entities/milestone.entity';
+import { Project } from '../../projects/entities/project.entity';
 
 @Entity('tasks')
 export class Task {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @ManyToOne(() => Project, project => project.tasks)
+  project: Project;
+
   @Column({ unique: true })
-  name: string;
+  code: string;
 
   @Column()
   title: string;
@@ -41,21 +44,21 @@ export class Task {
   @Column({ default: 0 })
   elapsed: number;
 
-  @OneToMany(type => History, history => history.task)
+  @OneToMany(() => History, history => history.task)
   history: History[];
 
-  @ManyToOne(type => Feature, feature => feature.tasks)
+  @ManyToOne(() => Feature, feature => feature.tasks)
   feature: Feature;
 
-  @ManyToMany(type => Attachment)
+  @ManyToMany(() => Attachment)
   @JoinTable()
   attachments: Attachment[];
 
-  @ManyToMany(type => Comment)
+  @ManyToMany(() => Comment)
   @JoinTable()
   comments: Comment[];
 
-  @ManyToMany(type => Employee)
+  @ManyToMany(() => Employee)
   @JoinTable()
   staff: Employee[];
 

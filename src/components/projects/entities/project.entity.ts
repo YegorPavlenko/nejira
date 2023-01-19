@@ -10,19 +10,25 @@ import {
   ManyToMany,
   JoinTable,
 } from 'typeorm';
+import { ApiProperty } from '@nestjs/swagger';
 import { Employee } from '../../employees/entities/employee.entity';
 import { Milestone } from '../../milestones/entities/milestone.entity';
+import { Task } from '../../tasks/entities/task.entity';
 
 @Entity('projects')
 export class Project {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @ApiProperty({ example: 'Nejira', description: "The project's name" })
+  @Column({ unique: true })
   name: string;
 
-  @Column()
-  tag: string; // short project name to use in tasks as a part of task name, recommended 3-5 symbols
+  @Column({ unique: true })
+  code: string; // short project name to use in tasks as a part of task name, recommended 3-5 symbols
+
+  @Column({ default: 0 })
+  tasksCount: number;
 
   @Column({ default: '' })
   description: string;
@@ -36,12 +42,15 @@ export class Project {
   @Column({ nullable: true })
   endDate: Date;
 
-  @ManyToMany(type => Employee)
+  @ManyToMany(() => Employee)
   @JoinTable()
   staff: Employee[];
 
-  @OneToMany(type => Milestone, milestone => milestone.project)
+  @OneToMany(() => Milestone, milestone => milestone.project)
   milestones: Milestone[];
+
+  @OneToMany(() => Task, task => task.project)
+  tasks: Task[];
 
   @CreateDateColumn()
   created: Date;
