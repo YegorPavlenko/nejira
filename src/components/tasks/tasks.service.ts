@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -9,6 +9,8 @@ import { deepClone } from '../../utils/algos';
 
 @Injectable()
 export class TasksService {
+  private readonly logger = new Logger(TasksService.name);
+
   constructor(
     private dataSource: DataSource,
     @InjectRepository(Project)
@@ -40,6 +42,7 @@ export class TasksService {
     } catch (err) {
       // since we have errors lets rollback the changes we made
       await queryRunner.rollbackTransaction();
+      this.logger.error(`Create task error with message: ${err.message}`);
       throw err;
     } finally {
       // you need to release a queryRunner which was manually instantiated
