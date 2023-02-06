@@ -24,6 +24,8 @@ import { History } from './components/history/entities/history.entity';
 import { Milestone } from './components/milestones/entities/milestone.entity';
 import { Project } from './components/projects/entities/project.entity';
 import { Task } from './components/tasks/entities/task.entity';
+import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -34,6 +36,7 @@ import { Task } from './components/tasks/entities/task.entity';
       username: 'postgres',
       password: '12345678nejiraAPI',
       database: 'nejira_api',
+      // eslint-disable-next-line prettier/prettier
       entities: [
         Attachment,
         Comment,
@@ -57,6 +60,8 @@ import { Task } from './components/tasks/entities/task.entity';
     ProjectsModule,
     TasksModule,
     FilesModule,
+    AuthModule,
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
